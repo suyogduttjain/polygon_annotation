@@ -28,6 +28,8 @@ see within a specifi HIT.
 Note: Please use the actual image_height and image_width in the URL because the clicks are recorded relative to that.
 
 After the HIT is submitted:
+The results file will contain all the clicked points along with the annotation time per image.
+Please refer to matlab/extract_masks.m for code to extract these annotations as masks images.
 
 After downloading this code:
 - interface has folder with the html/javascript code
