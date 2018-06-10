@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Annotation for Foreground Segmentation</title>
+  </head>
+  <body>   
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <!--<div align=center ><h3 style="color:green"> Click on the object boundaries to outline the object</h3></div>-->
+    <div align=center ><h1 style="color:black" id="title_line"></h1></div>
+    <!--<div align=center ><h3 style="color:green" id="no_object"> Press "No Object" Button if you cannot see any object in the image </h3></div>-->
+    <!--<div align=center ><h2 style="color:red" id="title_line1"> Please only mark a single prominent object</h2></div>-->
+    <div align=center ><h3 style="color:black" id="title_line2"> Read instructions below (Accept the HIT before starting)</h5></div>
+    <div align=center ><h3 style="color:black" id="title_line3"> Email: suyogduttjain85@gmail.com (if required)</h5></div>
+
+ <div align=center id="canvasDiv"></div>
+
+
+   
+ <script type="text/javascript" src="mturk_canvas.js"></script>   
+    <div align=center>
+		<table width=420> 
+			<tr align=center><td>
+				<form id="mturk_form" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
+					<input type="hidden" id="assignmentId" name="assignmentId" value="">
+					<input type="hidden" id="seg_results" name="results" value="">
+					<br>
+					<input type="hidden" id="noObjectButton" type="button" name="No Object" value="No Object" onClick="noObject()">
+					<input id="resetButton" type="button" name="Reset" value="Reset" onClick="resetCanvas()">
+					<input id="nextButton" type="button" name="Next" value="Next" onClick="nextImage()">					
+					<input id="submitButton" type="button" disabled name="Submit Results" value="Submit Results" onClick="submitResults()">
+				</form>
+			</td></tr>
+		</table>
+    </div>
+
+    <!--<table align=center width=720  border="1"> 		
+    <tr><td>		
+		    <table align=center width=700>  -->
+   <br><br><br>			    
+   <table align=center border="1"> 		
+    <tr><td>		
+    <table align=center> 
+	
+		<tr ><td id="inst_row0" > <h3 align=center> Instructions</h3></td></tr>
+		<tr ><td id="inst_row1" ></td></tr>
+		<tr><td id="inst_row2"></td></tr>
+		<tr><td id="inst_row3"></td></tr>
+		<tr><td id="inst_row4"></td></tr>
+		<tr><td id="inst_row5"> </td></tr>
+		<tr><td id="inst_row6"> </td></tr>
+		<tr><td id="inst_row7"> </td></tr>
+		<tr><td id="inst_row8"> </td></tr>
+		<tr><td id="inst_row9"> </td></tr>
+		<tr><td id="inst_row10"> </td></tr>
+		
+    </table>  
+    </td></tr>
+    </table>
+<script type="text/javascript">
+    	 //init(450,600,1);
+	init();	
+    </script>		
+    
+    <script type="text/javascript">
+		document.getElementById('assignmentId').value = gup('assignmentId');
+		//
+		// Check if the worker is PREVIEWING the HIT or if they've ACCEPTED the HIT
+		//
+		if (gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE")
+		{		
+			document.getElementById('resetButton').disabled = true;
+			document.getElementById('noObjectButton').disabled = true;
+			document.getElementById('nextButton').disabled = true;
+			document.getElementById('submitButton').disabled = true;
+			document.getElementById('submitButton').value = "You must ACCEPT the HIT before you can submit the results.";
+		} else {
+			var form = document.getElementById('mturk_form');
+			if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
+				form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
+			}
+		}
+	</script>
+  </body>
+</html>
